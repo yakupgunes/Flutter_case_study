@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // To parse this JSON data, do
 //
 //     final productModel = productModelFromMap(jsonString);
@@ -38,4 +39,9 @@ class ProductModel {
         "description": description,
         "id": id,
       };
+
+  @override
+  String toString() {
+    return 'ProductModel(name: $name, image: $image, price: $price, description: $description, id: $id)';
+  }
 }

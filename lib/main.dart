@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cevizsoft_case_study/remote_api.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,39 +12,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ana Sayfa'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const RemoteApi()));
-                },
-                child: const Text('Remote Api')),
-          ],
-        ),
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(412, 732),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Products',
+          theme: ThemeData.light().copyWith(
+            textTheme: GoogleFonts.latoTextTheme(),
+          ),
+          home: child,
+        );
+      },
+      child: const HomePage(title: 'First Method'),
     );
   }
 }
